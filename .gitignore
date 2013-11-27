@@ -1,10 +1,11 @@
-/shared
-/.vagrant
-/local-config.php
-/local-config-db.php
-/sql-dump-*.sql
-/db-sync
-/content
+# OS generated files #
+######################
 .DS_Store
-.idea
-config.local.yaml
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+/local-config.php

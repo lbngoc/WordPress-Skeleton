@@ -2,11 +2,6 @@
 // ===================================================
 // Load database info and local development parameters
 // ===================================================
-if ( file_exists( dirname( __FILE__ ) . '/local-config-db.php' ) ) {
-	define( 'WP_LOCAL_DEV', true );
-	include( dirname( __FILE__ ) . '/local-config-db.php' );
-}
-
 if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	defined('WP_LOCAL_DEV') or define( 'WP_LOCAL_DEV', true );
 	include( dirname( __FILE__ ) . '/local-config.php' );
@@ -32,14 +27,14 @@ if ( ! defined( 'DB_HOST' ) || strpos( DB_HOST, '%%' ) !== false ) {
 // ========================
 // Custom Content Directory
 // ========================
-defined('WP_CONTENT_DIR') or define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/content' );
-defined('WP_CONTENT_URL') or define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+defined('WP_CONTENT_DIR') or define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
+defined('WP_CONTENT_URL') or define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content' );
 
 // =============================
 // Configuration for the Content
 // =============================
-if ( file_exists( dirname( __FILE__ ) . '/content/config.php' ) ) {
-	include( dirname( __FILE__ ) . '/content/config.php' );
+if ( file_exists( dirname( __FILE__ ) . '/wp-content/config.php' ) ) {
+	include( dirname( __FILE__ ) . '/wp-content/config.php' );
 }
 
 // =====================
@@ -77,7 +72,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
 // Change this if you have multiple installs in the same database
 // ==============================================================
 if ( empty( $table_prefix ) )
-	$table_prefix  = 'sz_';
+	$table_prefix  = 'wp_';
 
 // =====================================
 // Errors
@@ -91,6 +86,7 @@ elseif ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
 	ini_set( 'display_errors', 0 );
 	define( 'WP_DEBUG_DISPLAY', false );
 }
+
 
 // ===================
 // Bootstrap WordPress
