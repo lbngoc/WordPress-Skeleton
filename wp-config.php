@@ -37,9 +37,9 @@ if ( file_exists( dirname( __FILE__ ) . '/wp-content/config.php' ) ) {
 	include( dirname( __FILE__ ) . '/wp-content/config.php' );
 }
 
-// =====================
-// URL hacks for Vagrant
-// =====================
+// ==========================================
+// URL hacks for proper wp-admin side loading
+// ==========================================
 if ( WP_LOCAL_DEV && ! defined('WP_SITEURL') ) {
 	define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp');
 
@@ -47,6 +47,8 @@ if ( WP_LOCAL_DEV && ! defined('WP_SITEURL') ) {
 		define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
 	}
 }
+// This will disallow WordPress core updates from /wp-admin
+define( 'DISALLOW_FILE_MODS', true );
 
 // ================================================
 // You almost certainly do not want to change these
@@ -86,7 +88,6 @@ elseif ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
 	ini_set( 'display_errors', 0 );
 	define( 'WP_DEBUG_DISPLAY', false );
 }
-
 
 // ===================
 // Bootstrap WordPress
