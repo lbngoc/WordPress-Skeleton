@@ -81,7 +81,12 @@ if ( empty( $table_prefix ) )
 // Show/hide errors for local/production
 // =====================================
 if ( WP_LOCAL_DEV ) {
+	// Open your eyes!
 	defined( 'WP_DEBUG' ) or define( 'WP_DEBUG', true );
+	define('WP_DEBUG_LOG', true);
+	define('WP_DEBUG_DISPLAY', false);
+	define('SCRIPT_DEBUG', true);
+	define('SAVEQUERIES', true);
 }
 // Only override if not already set
 elseif ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
@@ -102,3 +107,10 @@ if ( ! file_exists( ABSPATH . 'wp-settings.php' ) ) {
 	die();
 }
 require_once( ABSPATH . 'wp-settings.php' );
+
+
+/** Override default file permissions for installing plugins */
+if(is_admin()) {
+add_filter('filesystem_method', create_function('$a', 'return "direct";' ));
+ define( 'FS_CHMOD_DIR', 0751 );
+ }
