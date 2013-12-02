@@ -47,9 +47,6 @@ if ( WP_LOCAL_DEV && ! defined('WP_SITEURL') ) {
 		define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
 	}
 }
-// This will disallow WordPress core updates from /wp-admin
-define( 'DISALLOW_FILE_MODS', true );
-
 // ================================================
 // You almost certainly do not want to change these
 // ================================================
@@ -111,6 +108,9 @@ require_once( ABSPATH . 'wp-settings.php' );
 
 /** Override default file permissions for installing plugins */
 if(is_admin()) {
-add_filter('filesystem_method', create_function('$a', 'return "direct";' ));
- define( 'FS_CHMOD_DIR', 0751 );
- }
+	add_filter('filesystem_method', create_function('$a', 'return "direct";' ));
+	define( 'FS_CHMOD_DIR', 0751 );
+} else {
+	// This will disallow WordPress core updates from /wp-admin
+	define( 'DISALLOW_FILE_MODS', true );
+}
