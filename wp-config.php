@@ -40,13 +40,14 @@ if ( file_exists( dirname( __FILE__ ) . '/wp-content/config.php' ) ) {
 // ==========================================
 // URL hacks for proper wp-admin side loading
 // ==========================================
-if ( WP_LOCAL_DEV && ! defined('WP_SITEURL') ) {
+if ( ! defined('WP_SITEURL') ) {
 	define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp');
-
+	
 	if ( ! defined( 'WP_HOME' ) ) {
 		define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
 	}
 }
+
 // ================================================
 // You almost certainly do not want to change these
 // ================================================
