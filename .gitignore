@@ -8,5 +8,5 @@
 ehthumbs.db
 Thumbs.db
 
-www/wp
-www/local-config.php
+wp
+local-config.php

@@ -42,7 +42,7 @@ if ( file_exists( dirname( __FILE__ ) . '/wp-content/config.php' ) ) {
 // ==========================================
 if ( ! defined('WP_SITEURL') ) {
 	define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp');
-	
+
 	if ( ! defined( 'WP_HOME' ) ) {
 		define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
 	}
@@ -115,3 +115,7 @@ if(is_admin()) {
 	// This will disallow WordPress core updates from /wp-admin
 	define( 'DISALLOW_FILE_MODS', true );
 }
+
+// Disable WP-CRON default
+define( 'DISABLE_WP_CRON', true );
+// define( 'ALTERNATE_WP_CRON', true );
